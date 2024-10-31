@@ -1,11 +1,9 @@
-numeros = [31, 40, 59, 26, 41, 58]
-
-n = len(numeros)
-for i in range(n):
-    for j in range(0, n-i-1):
-        if numeros[j] > numeros[j+1]:
-            numeros[j], numeros[j+1] = numeros[j+1], numeros[j]
-
-print("Números em ordem crescente:")
-for numero in numeros:
-    print(numero)
+def ler_arquivo_e_ordenar(nome_arquivo):
+    with open(nome_arquivo, 'r') as arquivo:
+        conteudo = arquivo.read().strip()
+        numeros = list(map(int, conteudo.split()))
+        numeros_ordenados = sorted(numeros)
+        return ' '.join(map(str, numeros_ordenados))
+arquivo_nome = 'extra.txt'
+resultado = ler_arquivo_e_ordenar(arquivo_nome)
+print(f'Números ordenados: {resultado}')
